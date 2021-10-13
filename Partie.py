@@ -193,7 +193,7 @@ class Partie:
         self.cases[17].append(Case(17, 8, False, True, True, False, Gomme.superGomme, background))
         self.ticks = 1
         self.pacman = PacMan(self.background, self.statusPartie, self.cases)
-        self.fantomes = [Fantome(self.background, self.pacman, self.cases) for f in range(1)]
+        self.fantomes = [Fantome(self.background, self.pacman, self.cases) for f in range(4)]
         self.window.bind("<Up>", self.pacman.monter)
         self.window.bind("<Down>", self.pacman.descendre)
         self.window.bind("<Right>", self.pacman.droite)
