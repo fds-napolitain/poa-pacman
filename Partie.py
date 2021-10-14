@@ -204,6 +204,7 @@ class Partie:
         self = self.__init__(self.window, self.background, self.statusPartie)
 
     def motion(self):
+        self.pacman.deplacer()
         for f in self.fantomes:
             if self.pacman.ticks != 0:
                 f.objectif = Objectif.fuir

@@ -27,36 +27,40 @@ class PacMan:
     def monter(self, event):
         if self.statusPartie.get() != Status.enCours.value or self.hasMoved == 2:
             return False
-        if not self.cases[self.x][self.y].haut:
-            self.y -= 1
-            self.hasMoved += 1
-        self.deplacer()
+        self.action = Action.monter
+        #self.deplacer()
 
     def descendre(self, event):
         if self.statusPartie.get() != Status.enCours.value or self.hasMoved == 2:
             return False
-        if not self.cases[self.x][self.y].bas:
-            self.y += 1
-            self.hasMoved += 1
-        self.deplacer()
+        self.action = Action.descendre
+        #self.deplacer()
 
     def droite(self, event):
         if self.statusPartie.get() != Status.enCours.value or self.hasMoved == 2:
             return False
-        if not self.cases[self.x][self.y].droite:
-            self.x += 1
-            self.hasMoved += 1
-        self.deplacer()
+        self.action = Action.droite
+        #self.deplacer()
 
     def gauche(self, event):
         if self.statusPartie.get() != Status.enCours.value or self.hasMoved == 2:
             return False
-        if not self.cases[self.x][self.y].gauche:
-            self.x -= 1
-            self.hasMoved += 1
-        self.deplacer()
+        self.action = Action.gauche
+        #self.deplacer()
 
     def deplacer(self):
+        if self.action == Action.monter and not self.cases[self.x][self.y].haut:
+            self.y -= 1
+            self.hasMoved += 1
+        if self.action == Action.descendre and not self.cases[self.x][self.y].bas:
+            self.y += 1
+            self.hasMoved += 1
+        if self.action == Action.droite and not self.cases[self.x][self.y].droite:
+            self.x += 1
+            self.hasMoved += 1
+        if self.action == Action.gauche and not self.cases[self.x][self.y].gauche:
+            self.x -= 1
+            self.hasMoved += 1
         self.background.coords(self.sprite, self.x * l + (3 * e), self.y * l + (3 * e))
         if self.cases[self.x][self.y].gomme in [Gomme.gomme, Gomme.superGomme]:
             if self.cases[self.x][self.y].gomme == Gomme.superGomme:
