@@ -9,3 +9,5 @@ pyvenv.cfg
 **/.DS_Store
 lib/
 include/
+.vs/
+output/
